@@ -2,7 +2,7 @@
 
 Electron + React + Vite + Tailwind 기반의 크로스플랫폼 포트 관리 앱입니다.
 
-## 기능
+## 기능 및 설명
 
 - macOS / Windows 포트 점유 목록 조회
 - PID 기준 프로세스 종료
