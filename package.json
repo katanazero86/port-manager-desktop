@@ -1,0 +1,50 @@
+{
+  "name": "port-manager-desktop",
+  "version": "1.1.0",
+  "description": "Cross-platform desktop app to inspect and kill processes by port.",
+  "main": "electron/main.cjs",
+  "author": "zero86",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1 --port 5173\" \"wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "start": "electron .",
+    "build:renderer": "vite build",
+    "build": "vite build && electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^35.0.2",
+    "electron-builder": "^26.0.12",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.4.1",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "local.port.manager.desktop",
+    "productName": "Port Manager Desktop",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist-electron"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
