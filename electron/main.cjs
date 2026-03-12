@@ -2,7 +2,7 @@ const path = require("node:path");
 const { execFile } = require("node:child_process");
 const { promisify } = require("node:util");
 const { app, BrowserWindow, ipcMain, dialog } = require("electron");
-const { listPorts, killProcessByPid } = require("./port-service.cjs");
+const { listPorts, killProcessByPid, killProcessesByPreset } = require("./port-service.cjs");
 
 const execFileAsync = promisify(execFile);
 const devServerUrl = process.env.VITE_DEV_SERVER_URL;
@@ -74,6 +74,22 @@ function registerIpcHandlers() {
   });
 
   ipcMain.handle("admin:status", async () => getAdminStatus());
+
+  ipcMain.handle("quick-kill:run", async (_event, presetKey) => {
+    try {
+      const result = await killProcessesByPreset(presetKey);
+      return {
+        ok: true,
+        message: `${result.label}: ${result.count} process(es) terminated.`,
+        result
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        message: error.stderr?.trim() || error.message || "Quick kill failed."
+      };
+    }
+  });
 
   ipcMain.handle("admin:elevate", async () => {
     try {
