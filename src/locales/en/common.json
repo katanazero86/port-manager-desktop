@@ -1,0 +1,77 @@
+{
+  "app": {
+    "title": "Port Manager Desktop",
+    "description": "Monitor ports, CPU, memory, and developer quick-kill actions from a single screen.",
+    "lastUpdated": "Last updated {{value}}",
+    "lastUpdatedEmpty": "No refresh yet"
+  },
+  "language": {
+    "label": "Language",
+    "ko": "Korean",
+    "en": "English"
+  },
+  "status": {
+    "loading": "Loading port list.",
+    "refreshing": "Refreshing port list.",
+    "loaded": "Found {{count}} ports.",
+    "loadFailed": "Failed to load the port list.",
+    "requestingAdmin": "Sending administrator permission request.",
+    "requestAdminFailed": "Failed to request administrator permission.",
+    "quickKillRunning": "Running {{label}}.",
+    "quickKillFailed": "Quick Kill failed.",
+    "killRunning": "Attempting to terminate PID {{pid}}.",
+    "killFailed": "Failed to terminate the process."
+  },
+  "admin": {
+    "title": "Privilege Status",
+    "request": "Request Admin Rights",
+    "checking": "Checking..."
+  },
+  "summary": {
+    "total": "Total Ports"
+  },
+  "filter": {
+    "title": "Filter",
+    "badge": "Dev",
+    "devPortsOnly": "Show dev ports only (3000-9999)"
+  },
+  "quickKill": {
+    "title": "Quick Kill",
+    "badge": "Developer",
+    "node": "Kill All Node",
+    "python": "Kill All Python",
+    "java": "Kill All Java",
+    "docker": "Kill All Docker",
+    "confirmMessage": "Running {{label}} will terminate all matching processes. Continue?"
+  },
+  "toolbar": {
+    "title": "Port List",
+    "description": "Search by port, PID, process name, CPU, or memory.",
+    "placeholder": "Search by port, process, PID",
+    "refresh": "Refresh"
+  },
+  "table": {
+    "port": "Port",
+    "protocol": "Protocol",
+    "process": "Process",
+    "pid": "PID",
+    "cpu": "CPU %",
+    "memory": "Memory",
+    "local": "Local Address",
+    "remote": "Remote Address",
+    "state": "State",
+    "action": "Action",
+    "empty": "No matching ports found.",
+    "kill": "Kill"
+  },
+  "confirm": {
+    "run": "Run",
+    "close": "Terminate",
+    "cancel": "Cancel",
+    "processTitle": "Terminate Process",
+    "processMessage": "Terminate PID {{pid}} using port {{port}}?"
+  },
+  "units": {
+    "mb": "MB"
+  }
+}

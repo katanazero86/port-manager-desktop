@@ -1,0 +1,77 @@
+{
+  "app": {
+    "title": "Port Manager Desktop",
+    "description": "포트 조회, CPU/메모리 모니터링, 개발자용 Quick Kill을 한 화면에서 처리합니다.",
+    "lastUpdated": "마지막 갱신 {{value}}",
+    "lastUpdatedEmpty": "마지막 갱신 없음"
+  },
+  "language": {
+    "label": "Language",
+    "ko": "한국어",
+    "en": "English"
+  },
+  "status": {
+    "loading": "포트 목록을 불러오는 중입니다.",
+    "refreshing": "포트 목록을 새로 불러오는 중입니다.",
+    "loaded": "총 {{count}}개의 포트를 찾았습니다.",
+    "loadFailed": "포트 목록을 불러오지 못했습니다.",
+    "requestingAdmin": "관리자 권한 요청을 전송했습니다.",
+    "requestAdminFailed": "관리자 권한 요청에 실패했습니다.",
+    "quickKillRunning": "{{label}} 실행 중입니다.",
+    "quickKillFailed": "Quick Kill 실행에 실패했습니다.",
+    "killRunning": "PID {{pid}} 종료를 시도하는 중입니다.",
+    "killFailed": "프로세스 종료에 실패했습니다."
+  },
+  "admin": {
+    "title": "권한 상태",
+    "request": "관리자 권한 요청",
+    "checking": "확인 중..."
+  },
+  "summary": {
+    "total": "전체 포트"
+  },
+  "filter": {
+    "title": "필터",
+    "badge": "Dev",
+    "devPortsOnly": "개발 포트만 보기 (3000-9999)"
+  },
+  "quickKill": {
+    "title": "Quick Kill",
+    "badge": "Developer",
+    "node": "Kill All Node",
+    "python": "Kill All Python",
+    "java": "Kill All Java",
+    "docker": "Kill All Docker",
+    "confirmMessage": "{{label}}을 실행하면 관련 프로세스가 모두 종료됩니다. 계속하시겠습니까?"
+  },
+  "toolbar": {
+    "title": "포트 목록",
+    "description": "포트, PID, 프로세스명, CPU, 메모리 기준으로 검색할 수 있습니다.",
+    "placeholder": "포트, 프로세스명, PID 검색",
+    "refresh": "새로고침"
+  },
+  "table": {
+    "port": "포트",
+    "protocol": "프로토콜",
+    "process": "프로세스",
+    "pid": "PID",
+    "cpu": "CPU %",
+    "memory": "메모리",
+    "local": "로컬 주소",
+    "remote": "원격 주소",
+    "state": "상태",
+    "action": "동작",
+    "empty": "검색 결과가 없습니다.",
+    "kill": "Kill"
+  },
+  "confirm": {
+    "run": "실행",
+    "close": "종료",
+    "cancel": "취소",
+    "processTitle": "프로세스 종료",
+    "processMessage": "포트 {{port}}를 점유한 PID {{pid}}를 종료하시겠습니까?"
+  },
+  "units": {
+    "mb": "MB"
+  }
+}
