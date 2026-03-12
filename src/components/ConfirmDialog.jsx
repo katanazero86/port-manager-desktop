@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
-function ConfirmDialog({ open, title, message, confirmLabel = "확인", busy, onConfirm, onCancel }) {
+function ConfirmDialog({ open, title, message, confirmLabel, busy, onConfirm, onCancel }) {
+  const { t } = useTranslation();
   const cancelButtonRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function ConfirmDialog({ open, title, message, confirmLabel = "확인", busy, on
             disabled={busy}
             className="rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-slate-200 transition hover:bg-slate-700 disabled:cursor-wait disabled:opacity-60"
           >
-            취소
+            {t("confirm.cancel")}
           </button>
           <button
             type="button"

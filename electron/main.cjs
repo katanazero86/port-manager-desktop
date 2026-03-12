@@ -1,19 +1,25 @@
 const path = require("node:path");
 const { execFile } = require("node:child_process");
 const { promisify } = require("node:util");
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require("electron");
 const { listPorts, killProcessByPid, killProcessesByPreset } = require("./port-service.cjs");
 
 const execFileAsync = promisify(execFile);
 const devServerUrl = process.env.VITE_DEV_SERVER_URL;
+const githubUrl = "https://github.com/katanazero86/port-manager-desktop";
 let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
-    minWidth: 1024,
-    minHeight: 768,
+    width: 1100,
+    height: 800,
+    minWidth: 1100,
+    minHeight: 800,
+    maxWidth: 1100,
+    maxHeight: 800,
+    resizable: false,
+    maximizable: false,
+    fullscreenable: false,
     useContentSize: true,
     backgroundColor: "#09111d",
     title: "Port Manager Desktop",
@@ -32,8 +38,63 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, "..", "dist", "index.html"));
 }
 
+function createApplicationMenu() {
+  const template = [
+    {
+      label: "File",
+      submenu: [
+        process.platform === "darwin" ? { role: "close" } : { role: "quit" }
+      ]
+    },
+    {
+      label: "Edit",
+      submenu: [
+        { role: "undo" },
+        { role: "redo" },
+        { type: "separator" },
+        { role: "cut" },
+        { role: "copy" },
+        { role: "paste" },
+        { role: "selectAll" }
+      ]
+    },
+    {
+      label: "View",
+      submenu: [
+        { role: "reload" },
+        { role: "forceReload" },
+        { role: "toggleDevTools" }
+      ]
+    },
+    {
+      label: "Window",
+      submenu: [
+        { role: "minimize" }
+      ]
+    },
+    {
+      label: "Help",
+      submenu: [
+        {
+          label: "GitHub",
+          click: async () => {
+            await shell.openExternal(githubUrl);
+          }
+        }
+      ]
+    }
+  ];
+
+  if (process.platform === "darwin") {
+    template.unshift({ label: app.name, submenu: [{ role: "about" }, { type: "separator" }, { role: "services" }, { type: "separator" }, { role: "hide" }, { role: "hideOthers" }, { role: "unhide" }, { type: "separator" }, { role: "quit" }] });
+  }
+
+  Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+}
+
 app.whenReady().then(() => {
   registerIpcHandlers();
+  createApplicationMenu();
   createWindow();
 
   app.on("activate", () => {

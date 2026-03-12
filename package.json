@@ -14,8 +14,10 @@
     "pack": "electron-builder --dir"
   },
   "dependencies": {
+    "i18next": "^25.8.18",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-i18next": "^16.5.8"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",

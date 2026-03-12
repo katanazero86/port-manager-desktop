@@ -30,3 +30,7 @@ npm start
 ```bash
 npm run build
 ```
+
+## Preview
+
+![img.png](img.png)
