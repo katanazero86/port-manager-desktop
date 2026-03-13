@@ -191,7 +191,9 @@ function parseMacLsof(stdout, protocol, processMap) {
       }
 
       const pid = Number(columns[1]);
-      const nameField = columns[columns.length - 1];
+      // The lsof NAME column may span multiple whitespace-separated tokens,
+      // for example: "127.0.0.1:5173 (LISTEN)" on macOS TCP listeners.
+      const nameField = columns.slice(8).join(" ");
       const stateMatch = line.match(/\(([^)]+)\)\s*$/);
       const state = protocol === "TCP" ? (stateMatch ? stateMatch[1] : "LISTEN") : "BOUND";
 
