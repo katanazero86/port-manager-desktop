@@ -45,15 +45,15 @@
     },
     "mac": {
       "target": "dmg",
-      "category": "public.app-category.utilities"
+      "category": "public.app-category.utilities",
+      "icon": "assets/icon-mac.png"
     },
     "win": {
       "target": [
         "nsis",
         "msi"
       ],
-      "icon": "assets/icon.ico"
-    },
-    "icon": "assets/icon.ico"
+      "icon": "assets/icon-win.ico"
+    }
   }
 }
